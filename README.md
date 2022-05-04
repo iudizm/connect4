@@ -1,2 +1,2 @@
 # connect4
-connect four game in python
+_connect four_ game in python
