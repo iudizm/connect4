@@ -13,3 +13,7 @@ class Stack:
     
     def top(self):
         return self._content[-1]
+
+    def isNotFull(self):
+        return len(self) < 6
+    
