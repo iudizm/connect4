@@ -8,6 +8,15 @@ class Connect4():
         self.__board = self.initializeBoard()
         self.__stacks = self.initializeStacks()
 
+    def columns(self):
+        return self.__stacks
+
+    def board(self):
+        return self.__board
+
+    def setBoard(self, board):
+        self.__board = board 
+
     def initializeBoard(self):
         board = []
         for i in range(0, 6):
@@ -30,12 +39,12 @@ class Connect4():
         row[4][0] = 'b | '
         row[5][0] = 'a | '
         print('')
-        print('  ' + '-' * (len(columns) - 3))
+        print('   ' + '-' * (len(columns) - 3))
         for j in range(0, len(rows)):
             for i in range(1, 8):
                 row[j][0] = row[j][0] + str(self.__board[j][i - 1]) + ' | '
             print(row[j][0])
-            print('  ' + '-' * ((len(row[j][0]) - 3)))
+            print('   ' + '-' * ((len(row[j][0]) - 3)))
         print(columns)
         print('')
 
@@ -75,7 +84,7 @@ class Connect4():
             'Whoever stacks 4 pieces next to each other, ' + \
             'either horizontally, vertically or diagonally wins.')
 
-    def start(self):
+    def match(self):
         self.showBoard()
         
         print(self.instructions())
@@ -86,7 +95,7 @@ class Connect4():
         while True:
             
             # player turn
-            self.__board, self.__stacks = player.makeAMove(self.__board, self.__stacks)
+            self.__board, self.__stacks = player.makeAMove(self)
             self.showBoard()
             
             if self.checkWin(player):
@@ -94,7 +103,7 @@ class Connect4():
                 break
             
             # ia turn
-            self.__board, self.__stacks = ia.makeAMove(self.__board, self.__stacks)
+            self.__board, self.__stacks = ia.makeAMove(self)
             self.showBoard()
             
             if self.checkWin(ia):

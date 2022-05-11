@@ -3,7 +3,7 @@ class Stack:
         self._content = []
     
     def __len__(self):
-        return len(self._content)    
+        return len(self._content)
     
     def push(self, element):
         if len(self._content) <= 6:
@@ -15,5 +15,4 @@ class Stack:
         return self._content[-1]
 
     def isNotFull(self):
-        return len(self) < 6
-    
+        return len(self._content) < 6

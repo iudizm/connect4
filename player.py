@@ -11,19 +11,19 @@ class Player():
     def piece(self):
         return self.piece
         
-    def makeAMove(self, board, stacks):
-        columns = {'1','2','3','4','5','6','7'}
-        chosen_column = str(input('Your move: '))
+    def makeAMove(self, game):
+        columns = ['1','2','3','4','5','6','7']
+        chosen_column = str(input('Your move, choose a column: '))
         if (chosen_column in columns) == False:
-            print('Input must be an integer between 1 and 7')
-            self.makeAMove(board, stacks)
+            print('Column must be an integer between 1 and 7')
+            self.makeAMove(game)
         else:
-            stack_index = int(chosen_column) - 1
+            column_index = int(chosen_column) - 1
             
-            if stacks[stack_index].isNotFull():
-                stacks[stack_index].push(self.piece)
-                board[6 - len(stacks[stack_index])][stack_index] = stacks[stack_index].top()
+            if game.columns()[column_index].isNotFull():
+                game.columns()[column_index].push(self.piece)
+                game.board()[6 - len( game.columns()[column_index])][column_index] = game.columns()[column_index].top()
             else:
                 print('Column full, try again...')
-                self.makeAMove(board, stacks)
-        return board, stacks
+                self.makeAMove(game)
+        return game.board(), game.columns()

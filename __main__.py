@@ -1,4 +1,4 @@
 import connect4
 
-game = connect4.Connect4()
-game.start()
+connect4 = connect4.Connect4()
+connect4.match()
