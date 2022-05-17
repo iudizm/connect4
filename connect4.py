@@ -21,7 +21,6 @@ class Connect4():
         board = []
         for i in range(0, 6):
             board.append([' '] * 7)
-        print(board)
         return board
 
     def initializeStacks(self):

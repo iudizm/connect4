@@ -2,7 +2,7 @@ from random import randint
 
 class Player():
     
-    def __init__(self, piece="😀"):
+    def __init__(self, piece="X"):
         self.piece = piece
 
     def wins(self):
