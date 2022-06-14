@@ -7,9 +7,6 @@ class Player():
 
     def wins(self):
         return "Player %s wins the game!"%(self.piece)
-
-    def piece(self):
-        return self.piece
         
     def makeAMove(self, game):
         columns = ['1','2','3','4','5','6','7']

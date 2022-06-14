@@ -1,8 +1,7 @@
 import player, trueRandom
-from random import randint
+import random
 
 class Ia(player.Player):
-    
     def __init__(self, piece="O"):
         super().__init__(piece)
         self.trueRandomPlays = (trueRandom.randomOrgRPC())
@@ -20,5 +19,10 @@ class Ia(player.Player):
     
     def getRandomPlays(self):
         if not self.trueRandomPlays:
-            self.trueRandomPlays = (trueRandom.randomOrgRPC())
+            try:
+                self.trueRandomPlays = trueRandom.randomOrgRPC()
+            except:
+                self.trueRandomPlays = []
+                for i in range(20):
+                    self.trueRandomPlays.append(random.randint(1,7))
         return self.trueRandomPlays.pop()
