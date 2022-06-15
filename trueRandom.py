@@ -1,4 +1,4 @@
-import json, requests
+import json, requests, random
 
 def randomOrgRPC():
     json_request_data = {
@@ -21,3 +21,14 @@ def randomOrgRPC():
         headers = headers
         )
     return response.json()['result']['random']['data']
+
+def generate():
+    try:
+        return randomOrgRPC()
+    except:
+        r = []
+        for i in range(20):
+            r.append(random.randint(1,7))
+        return r
+
+    

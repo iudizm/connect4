@@ -1,6 +1,6 @@
 # Connect4
 
-A _'Connect 4'_ game in python
+A 'Connect 4' game in python
 
 ## Rules of the game
 
@@ -14,10 +14,11 @@ The connections can be: horizontal, vertical, diagonal.
 
 ## Machine plays random
 
-Using the Random.org `true randomness` generation API, the Bot Player gets the _randomliest_ moves ever.
-***
+Using the Random.org "true randomness" API, the Bot plays as random as possible.
 
 ## UI
 
 The game UI is done trough terminal interaction.
 
+***
+Iudi Zurba Melgarejo
