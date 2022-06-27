@@ -1,6 +1,9 @@
-import player, trueRandom
+import player
+import trueRandom
+
 
 class Ia(player.Player):
+
     def __init__(self, piece="O"):
         super().__init__(piece)
         self.trueRandomPlays = trueRandom.generate()
@@ -15,8 +18,8 @@ class Ia(player.Player):
         else:
             self.makeAMove(game)
         return game.board(), game.columns()
-    
-    def getRandomPlays(self):
+
+    def getRandomPlays(self) -> int:
         if not self.trueRandomPlays:
             self.trueRandomPlays = trueRandom.generate()
         return self.trueRandomPlays.pop()
