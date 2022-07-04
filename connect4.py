@@ -73,40 +73,58 @@ class Connect4():
                 else:
                     continue
 
-        if game_over == True:
+        if game_over:
             player.wins()
         return game_over
 
     def instructions(self):
-        return ('To play: enter an integer between 1 to 7 ' + \
-            'corresponding to each column in the board. ' + \
-            'Whoever stacks 4 pieces next to each other, ' + \
-            'either horizontally, vertically or diagonally wins.')
+        return (
+            '=================================================== \n' + \
+            '                    HOW TO PLAY\n' + \
+            '>> Enter an integer between    1   and   7\n' + \
+            'corresponding to each column in the board.\n' + \
+            '>> Whoever stacks 4 pieces next to each other,\n' + \
+            'either horizontally, vertically or diagonally WINS!\n' + \
+            '===================================================')
+    
+    def gameModeMenu(self):
+        menu_message = (
+            "\n\n" + \
+            "===================================================\n" + \
+            "                CHOOSE THE GAME MODE\n" + \
+            "( 1 )   PLAYER vs PC \n" + \
+            "( 2 )   PLAYER vs PLAYER \n" + \
+            "===================================================\n('1' or '2')>>")
+        r = input(menu_message)
+        return r
 
-    def match(self):
-        self.showBoard()
-        
+    def definePlayers(self):
+        gameMode = self.gameModeMenu()
+        if gameMode == '1':
+            return [Player(), Ia()]
+        if gameMode == '2':
+            return [Player(), Player("O")]
+        self.definePlayers()
+
+    def match(self):        
+        p1, p2 = self.definePlayers()
         print(self.instructions())
-        
-        player = Player()
-        ia = Ia()
-        
+        self.showBoard()       
         while True:
-            
-            # player turn
-            self.__board, self.__stacks = player.makeAMove(self)
+            # p1 turn
+            self.__board, self.__stacks = p1.makeAMove(self)
             self.showBoard()
-            
-            if self.checkWin(player):
-                player.wins()
+
+            if self.checkWin(p1):
+                p1.wins()
                 break
             
-            # ia turn
-            self.__board, self.__stacks = ia.makeAMove(self)
+            # p2 turn
+            self.__board, self.__stacks = p2.makeAMove(self)
             self.showBoard()
             
-            if self.checkWin(ia):
-                ia.wins()
+            if self.checkWin(p2):
+                p2.wins()
                 break
         
-        print('Good game.')
+        print('Good game!')
