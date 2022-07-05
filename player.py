@@ -6,11 +6,11 @@ class Player():
         self.piece = piece
 
     def wins(self):
-        return "Player %s wins the game!"%(self.piece)
+        print("Player %s wins the game!"%(self.piece))
         
     def makeAMove(self, game):
         columns = ['1','2','3','4','5','6','7']
-        chosen_column = str(input('Your move, choose a column: '))
+        chosen_column = str(input('"%s" move, choose a column: '%(self.piece)))
         if (chosen_column in columns) == False:
             print('Column must be an integer between 1 and 7')
             self.makeAMove(game)
