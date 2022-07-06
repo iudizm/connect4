@@ -20,6 +20,6 @@ class GameWrapper():
         self.game.match()
         if self.playAgain():
             self.run()
-
+        print("\n"*20)
 game = GameWrapper()
 game.run()

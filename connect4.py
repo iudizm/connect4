@@ -111,12 +111,12 @@ class Connect4():
         print(self.instructions())
         self.showBoard()       
         while True:
+
             # p1 turn
             self.__board, self.__stacks = p1.makeAMove(self)
             self.showBoard()
 
             if self.checkWin(p1):
-                p1.wins()
                 break
             
             # p2 turn
@@ -124,7 +124,6 @@ class Connect4():
             self.showBoard()
             
             if self.checkWin(p2):
-                p2.wins()
                 break
         
         print('Good game!')
