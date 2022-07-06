@@ -6,7 +6,8 @@ class Ia(player.Player):
         self.trueRandomPlays = trueRandom.generate()
 
     def makeAMove(self, game):
-        print(self.trueRandomPlays)
+        print("="*40)
+        print("\nPC move:\n")
         chosen_column = self.getRandomPlays()
         stack_index = chosen_column - 1
         if game.columns()[stack_index].isNotFull():

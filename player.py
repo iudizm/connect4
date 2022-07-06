@@ -9,6 +9,7 @@ class Player():
         print("Player %s wins the game!"%(self.piece))
         
     def makeAMove(self, game):
+        print("="*40)
         columns = ['1','2','3','4','5','6','7']
         chosen_column = str(input('"%s" move, choose a column: '%(self.piece)))
         if (chosen_column in columns) == False:
