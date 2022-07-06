@@ -48,8 +48,8 @@ class Connect4():
         print('')
 
     def checkWin(self, player):
+        if self.checkDraw(): return False
         game_over = False
-        
         # Horizontal checker
         for j in range(0, 6):
             for i in range(3, 7):
@@ -106,24 +106,30 @@ class Connect4():
             return [Player(), Player("O")]
         self.definePlayers()
 
-    def match(self):        
+    def checkDraw(self):
+        for column in self.__stacks:
+            if column.isNotFull: return False
+        print("Draw!")
+        return True
+
+    def checkMove(self, player):
+        if self.checkWin(player): return True
+        if self.checkDraw(): return True
+
+    def match(self):
         p1, p2 = self.definePlayers()
         print(self.instructions())
-        self.showBoard()       
+        self.showBoard()
         while True:
 
             # p1 turn
             self.__board, self.__stacks = p1.makeAMove(self)
-            self.showBoard()
-
-            if self.checkWin(p1):
-                break
+            self.showBoard() 
+            if self.checkMove(p1): break
             
             # p2 turn
             self.__board, self.__stacks = p2.makeAMove(self)
             self.showBoard()
-            
-            if self.checkWin(p2):
-                break
-        
+            if self.checkMove(p2): break
+
         print('Good game!')
