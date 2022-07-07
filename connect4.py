@@ -49,12 +49,11 @@ class Connect4():
 
     def checkWin(self, player):
         game_over = False
-        
         # Horizontal checker
         for j in range(0, 6):
             for i in range(3, 7):
                 if (self.__board[j][i] == self.__board[j][i-1] == self.__board[j][i-2] == self.__board[j][i-3] == player.piece):
-                     game_over = True
+                    game_over = True
                 else:
                     continue
         # Vertical checker
@@ -106,25 +105,28 @@ class Connect4():
             return [Player(), Player("O")]
         self.definePlayers()
 
-    def match(self):        
+    def checkMove(self, player, round_number):
+        if self.checkWin(player): return True
+        elif round_number == 42:
+            print("Game Draw!")
+            return True
+        return False
+
+    def match(self):
         p1, p2 = self.definePlayers()
         print(self.instructions())
-        self.showBoard()       
+        self.showBoard()
+        round_number = 0
         while True:
+
             # p1 turn
+            round_number += 1
             self.__board, self.__stacks = p1.makeAMove(self)
             self.showBoard()
-
-            if self.checkWin(p1):
-                p1.wins()
-                break
+            if self.checkMove(p1, round_number): break
             
             # p2 turn
+            round_number += 1
             self.__board, self.__stacks = p2.makeAMove(self)
             self.showBoard()
-            
-            if self.checkWin(p2):
-                p2.wins()
-                break
-        
-        print('Good game!')
+            if self.checkMove(p2, round_number): break
