@@ -2,6 +2,8 @@
 
 A 'Connect 4' game in python
 
+To run: `python game_wrapper.py`
+
 ## Rules of the game
 
 The game is played by a Human vs. the Machine.
@@ -19,6 +21,3 @@ Using the Random.org "true randomness" API, the Bot plays as random as possible.
 ## UI
 
 The game UI is done trough terminal interaction.
-
-***
-Iudi Zurba Melgarejo
